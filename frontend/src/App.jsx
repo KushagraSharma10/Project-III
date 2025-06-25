@@ -1,21 +1,12 @@
-import axios from "./api/axiosconfig";
 import React, { useEffect } from "react";
+import { asyncGetUsers } from "./store/userActions";
 
 const App = () => {
-  const getProducts = async () => {
-    try {
-      const { data } = await axios.get("/products");
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getProducts();
+    asyncGetUsers();
   }, []);
 
-  return <div>App</div>;
+  return <div className="w-screen h-screen bg-zinc-800 text-white">App</div>;
 };
 
 export default App;

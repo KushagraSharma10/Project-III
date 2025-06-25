@@ -4,8 +4,11 @@ const initialState = {
   data: [],
 };
 
-createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
 });
+
+
+export default userSlice.reducer
