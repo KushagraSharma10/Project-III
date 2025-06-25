@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { asyncRegisterUser } from "../store/actions/userActions";
 import { nanoid } from "@reduxjs/toolkit";
 
@@ -9,18 +9,21 @@ const Register = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const RegisterHandler = (user) => {
     user.id = nanoid();
     user.isAdmin = false;
     console.log(user);
     dispatch(asyncRegisterUser(user));
+    navigate("/login");
+    reset();
   };
 
   const fields = [
-    { type: "text", label: "Name", placeholder :"John Doe"},
-    { type: "email", label: "Email" ,placeholder :"JohnDoe@gmail.com" },
-    { type: "password", label: "Password", placeholder :"******" },
+    { type: "text", label: "Name", placeholder: "John Doe" },
+    { type: "email", label: "Email", placeholder: "JohnDoe@gmail.com" },
+    { type: "password", label: "Password", placeholder: "******" },
   ];
 
   return (
