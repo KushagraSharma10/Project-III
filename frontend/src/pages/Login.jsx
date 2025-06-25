@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -10,7 +11,6 @@ const Login = () => {
     }
 
   const fields = [
-    { type: "text", label: "Name" },
     { type: "email", label: "Email" },
     { type: "password", label: "Password" },
   ];
@@ -30,7 +30,10 @@ const Login = () => {
           </div>
         ))}
       </>
-      <button className="px-3 mt-5 w-full py-1 font-semibold bg-green-600 rounded-md">Login</button>
+      <button className="px-3 mt-5 w-full py-1 font-semibold bg-green-600 rounded-md">Login User</button>
+      <p className="mt-5">
+        Don't have an account? <Link to = "/register" className = "text-blue-400">Register</Link>
+      </p>
     </form>
   );
 };
