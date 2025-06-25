@@ -7,8 +7,13 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    loadUser: (state, actions) => {
+      console.log(actions);
+    },
+  },
 });
 
+export const { loadUser } = userSlice.actions;
 
-export default userSlice.reducer
+export default userSlice.reducer;
