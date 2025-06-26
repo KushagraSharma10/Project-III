@@ -3,8 +3,17 @@ import axios from "../../api/axiosconfig";
 
 export const asyncLoginUser = (user) => async (dispatch, getState) => {
   try {
-    const res = await axios.get(`/users?Email=${user.email}&Password=${user.password}`)
-    console.log(res);    
+    const {data} = await axios.get(`/users?Email=${user.email}&Password=${user.password}`)
+    console.log(data[0]);
+    localStorage.setItem("user", JSON.stringify(data[0]))    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const asyncLogoutUser = (user) => async (dispatch, getState) => {
+  try {
+    localStorage.setItem("user", null)    
   } catch (error) {
     console.log(error)
   }
