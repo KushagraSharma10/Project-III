@@ -13,6 +13,7 @@ const CreateProduct = () => {
     user.id = nanoid();
     console.log(user);
     //   dispatch(asyncRegisterUser(user));
+    navigate("/products")
   };
 
   const fields = [
