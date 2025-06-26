@@ -3,16 +3,22 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-  
-  const user = useSelector((state) => state.userReducer.users)
-  console.log(user)
+  const user = useSelector((state) => state.userReducer.users);
+  console.log(user);
 
   return (
     <nav className="flex items-center py-10 justify-center mb-10 space-x-10">
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to="/products">Products</NavLink>
-      <NavLink to="/login">Login</NavLink>
-      <NavLink to="/admin/create-product">Create Product</NavLink>
+      {user ? (
+        <>
+          <NavLink to="/admin/create-product">Create Product</NavLink>
+        </>
+      ) : (
+        <>
+          <NavLink to="/login">Login</NavLink>
+        </>
+      )}
     </nav>
   );
 };
