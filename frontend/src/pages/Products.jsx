@@ -1,9 +1,31 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
 
 const Products = () => {
-  return (
-    <div>Products</div>
-  )
-}
+  const products = useSelector((state) => state.productReducer.products);
+  console.log(products);
 
-export default Products
+  const renderProducts = products.map((product, index) => {
+    return (
+      <div key={index} className="w-[24vw] [40vh] rounded-md overflow-hidden bg-zinc-900 border border-zinc-700 shadow">
+        <img
+          className="w-full h-[20vh] object-cover"
+          src={product.image}
+          alt=""
+        />
+        <div className="px-2 py-5 flex flex-col gap-4 justify-between">
+        <h1>{product.title}</h1>
+        <small>{product.description.slice(0,100)}...</small>
+        <div>
+          <p>{product.price}</p>
+          <button>Add to cart</button>
+        </div>
+        </div>
+      </div>
+    );
+  });
+
+  return <div className="w-full  flex items-center flex-wrap">{renderProducts}</div>;
+};
+
+export default Products;

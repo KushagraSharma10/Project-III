@@ -4,6 +4,7 @@ import MainRoutes from "./routes/MainRoutes";
 import Nav from "./components/Nav";
 import { useDispatch } from "react-redux";
 import { asyncCurrentUser } from "./store/actions/userActions";
+import { asyncLoadProducts } from "./store/actions/productActions";
 
 const App = () => {
 
@@ -11,6 +12,7 @@ const App = () => {
 
     useEffect(()=>{
       dispatch(asyncCurrentUser())
+      dispatch(asyncLoadProducts())
     })
 
   return (

@@ -6,7 +6,7 @@ export const asyncLoadProducts = () => async(dispatch, getState) =>{
         const {data} = await axios.get("/products")
         dispatch(loadProduct(data))
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
