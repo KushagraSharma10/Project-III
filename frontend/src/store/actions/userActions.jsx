@@ -25,7 +25,8 @@ export const asyncLoginUser = (user) => async (dispatch, getState) => {
 
 export const asyncLogoutUser = (user) => async (dispatch, getState) => {
   try {
-    localStorage.setItem("user", null);
+    localStorage.removeItem("user");
+    console.log("User Logged out!")
   } catch (error) {
     console.log(error);
   }
