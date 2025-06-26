@@ -7,7 +7,7 @@ const Nav = () => {
   console.log(user);
 
   return (
-    <nav className="flex items-center py-10 justify-center mb-10 space-x-10">
+    <nav className="flex items-center py-5 justify-center mb-10 space-x-10">
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to="/products">Products</NavLink>
       {user ? (
