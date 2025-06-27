@@ -9,6 +9,7 @@ import ProductDetails from "../pages/admin/ProductDetails";
 import { useSelector } from "react-redux";
 import UserProfile from "../pages/user/UserProfile";
 import AuthWrapper from "./AuthWrapper";
+import PageNotFound from "../pages/PageNotFound";
 
 const MainRoutes = () => {
   return (
@@ -40,6 +41,8 @@ const MainRoutes = () => {
           </AuthWrapper>
         }
       />
+
+      <Route path="*" element = {<PageNotFound />} />
     </Routes>
   );
 };
