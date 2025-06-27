@@ -6,7 +6,7 @@
       "Email": "kushagrasharma@gmail.com",
       "Password": "asldjas",
       "isAdmin": true,
-      "cart" : []
+      "cart": []
     },
     {
       "id": "W8zqiGf8ymKxbOBJWqEmQ",
@@ -14,7 +14,80 @@
       "Email": "sheriyanscoding@gmail.com",
       "Password": "shery",
       "isAdmin": false,
-      "cart" : []
+      "cart": [
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "1",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "products": [

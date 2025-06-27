@@ -1,20 +1,26 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { asyncUpdateUser } from "../store/actions/userActions";
 
 const Products = () => {
+
+  const dispatch = useDispatch();
+
   const {
     productReducer: { products },
     userReducer: { users },
   } = useSelector((state) => state);
   const AddToCartHandler = (id) => {
-    const copyUser = { ...users };
-    const index = copyUser.cart.findIndex((e) => e.id == id);
+    const copyUser = { ...users, cart : [...users.cart] };
+    const index = copyUser.cart.findIndex((c) => c.productId == id);
     if (index == -1) {
       copyUser.cart.push({ productId: id, quantity: 1 });
     } else {
       copyUser.cart[index].quantity += 1;
     }
+    
+    dispatch(asyncUpdateUser(copyUser.id, copyUser))
   };
 
   const renderProducts = products.map((product, index) => {
