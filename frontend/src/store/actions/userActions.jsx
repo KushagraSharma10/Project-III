@@ -37,6 +37,7 @@ export const asyncUpdateUser = (id, user) => async (dispatch, getState) => {
   try {
     const { data } = await axios.patch("/users/" + id, user);
     localStorage.setItem("user", JSON.stringify(data));
+    dispatch(asyncCurrentUser())
   } catch (error) {
     console.log(error);
   }

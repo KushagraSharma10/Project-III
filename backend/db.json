@@ -6,6 +6,13 @@
       "Email": "kushagrasharma@gmail.com",
       "Password": "asldjas",
       "isAdmin": true
+    },
+    {
+      "id": "W8zqiGf8ymKxbOBJWqEmQ",
+      "Name": "Sheriyans coding school",
+      "Email": "sheriyanscoding@gmail.com",
+      "Password": "shery",
+      "isAdmin": false
     }
   ],
   "products": [
