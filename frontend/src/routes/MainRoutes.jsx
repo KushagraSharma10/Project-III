@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
 import { useSelector } from "react-redux";
+import UserProfile from "../pages/user/UserProfile";
 
 const MainRoutes = () => {
 
@@ -19,6 +20,7 @@ const MainRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin/create-product" element={<CreateProduct />} />
+      <Route path="/admin/user-profile" element={<UserProfile />} />
       <Route path="/product/:id" element={<ProductDetails />} />
     </Routes>
   );
