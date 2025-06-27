@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { asyncUpdateUser } from "../store/actions/userActions";
 
 const Products = () => {
-
   const dispatch = useDispatch();
 
   const {
@@ -12,15 +11,18 @@ const Products = () => {
     userReducer: { users },
   } = useSelector((state) => state);
   const AddToCartHandler = (id) => {
-    const copyUser = { ...users, cart : [...users.cart] };
+    const copyUser = { ...users, cart: [...users.cart] };
     const index = copyUser.cart.findIndex((c) => c.productId == id);
     if (index == -1) {
       copyUser.cart.push({ productId: id, quantity: 1 });
     } else {
-      copyUser.cart[index].quantity += 1;
+      copyUser.cart[index] = {
+        productId: id,
+        quantity: copyUser.cart[index].quantity + 1,
+      };
     }
-    
-    dispatch(asyncUpdateUser(copyUser.id, copyUser))
+
+    dispatch(asyncUpdateUser(copyUser.id, copyUser));
   };
 
   const renderProducts = products.map((product, index) => {
