@@ -3,16 +3,9 @@
     {
       "id": "hCkqPmpozK0QhDRP_v4Fh",
       "Name": "Kushagra Sharma",
-      "Email": "kushsharma@gmail.com",
+      "Email": "kushagrasharma@gmail.com",
       "Password": "asldjas",
       "isAdmin": true
-    },
-    {
-      "id": "Sjsdd2u6AqdbiJnx7tvCH",
-      "Name": "Kumar-Sachin",
-      "Email": "Doing@doing.gmail.com",
-      "Password": "asdasdads",
-      "isAdmin": false
     }
   ],
   "products": [

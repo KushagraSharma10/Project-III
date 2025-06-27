@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { asyncUpdateUser } from "../../store/actions/userActions";
+import { asyncDeleteUser, asyncLogoutUser, asyncUpdateUser } from "../../store/actions/userActions";
 
 const UserProfile = () => {
   const users = useSelector((state) => state.userReducer.users);
@@ -25,9 +25,15 @@ const UserProfile = () => {
     dispatch(asyncUpdateUser(users.id, user));
   };
 
+  const LogoutHandler = () => {
+    dispatch(asyncLogoutUser());
+    navigate("/login");
+  };
+
+
   const DeleteHandler = () => {
-    // dispatch(asyncDeleteProduct(id));
-    navigate("/");
+    dispatch(asyncDeleteUser(users.id));
+    navigate("/login");
   };
 
   const fields = [
@@ -68,6 +74,15 @@ const UserProfile = () => {
         >
           Delete user
         </button>
+
+        <button
+          type="button"
+          onClick={LogoutHandler}
+          className="px-3 mt-5 w-full py-1.5 font-semibold bg-orange-600 rounded-md"
+        >
+          Logout user
+        </button>
+
       </div>
     </form>
   ) : (
