@@ -33,9 +33,9 @@ export const asyncLogoutUser = (user) => async (dispatch, getState) => {
   }
 };
 
-export const asyncUpdateUser = (user) => async (dispatch, getState) => {
+export const asyncUpdateUser = (id, user) => async (dispatch, getState) => {
   try {
-   const {data}  = await axios.patch("/users", user)
+   const {data}  = await axios.patch("/users/" + id, user)
    console.log(data)
   } catch (error) {
     console.log(error);
