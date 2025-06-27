@@ -7,11 +7,14 @@ const Products = () => {
     productReducer: { products },
     userReducer: { users },
   } = useSelector((state) => state);
-
   const AddToCartHandler = (id) => {
     const copyUser = { ...users };
-    const x = copyUser.cart.find((e) => e.id == id);
-    console.log(x);
+    const index = copyUser.cart.findIndex((e) => e.id == id);
+    if (index == -1) {
+      copyUser.cart.push({ productId: id, quantity: 1 });
+    } else {
+      copyUser.cart[index].quantity += 1;
+    }
   };
 
   const renderProducts = products.map((product, index) => {
