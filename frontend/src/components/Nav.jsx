@@ -8,9 +8,12 @@ const Nav = () => {
   return (
     <nav className="flex items-center py-5 justify-center mb-10 space-x-10">
       <NavLink to={"/"}>Home</NavLink>
-      {user  ? (
+      {user ? (
         <>
-          <NavLink to="/admin/create-product">Create Product</NavLink>
+          {user && user?.isAdmin && (
+            <NavLink to="/admin/create-product">Create Product</NavLink>
+          )}
+
           <NavLink to="/admin/user-profile">Settings</NavLink>
         </>
       ) : (
