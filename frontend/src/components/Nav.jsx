@@ -17,7 +17,6 @@ const Nav = () => {
   return (
     <nav className="flex items-center py-5 justify-center mb-10 space-x-10">
       <NavLink to={"/"}>Home</NavLink>
-      <NavLink to="/products">Products</NavLink>
       {user ? (
         <>
           <NavLink to="/admin/create-product">Create Product</NavLink>

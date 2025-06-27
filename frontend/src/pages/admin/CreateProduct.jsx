@@ -14,7 +14,7 @@ const CreateProduct = () => {
     product.id = nanoid();
     console.log(product);
     dispatch(asyncCreateProduct(product));
-    navigate("/products");
+    navigate("/");
   };
 
   const fields = [
