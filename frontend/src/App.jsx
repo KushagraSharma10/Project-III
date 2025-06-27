@@ -16,7 +16,7 @@ const App = () => {
     })
 
   return (
-    <div className="w-screen px-[10%] h-screen bg-zinc-800 text-white">
+    <div className="overflow-auto w-screen px-[10%] h-screen bg-zinc-800 text-white">
       <Nav />
       <MainRoutes />
     </div>
