@@ -33,6 +33,16 @@ export const asyncLogoutUser = (user) => async (dispatch, getState) => {
   }
 };
 
+export const asyncUpdateUser = (user) => async (dispatch, getState) => {
+  try {
+   const {data}  = await axios.patch("/users", user)
+   console.log(data)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export const asyncRegisterUser = (user) => async (dispatch, getState) => {
   try {
     const res = await axios.post("/users", user);

@@ -12,7 +12,7 @@ import UserProfile from "../pages/user/UserProfile";
 const MainRoutes = () => {
 
   const {users} = useSelector((state) => state.userReducer)
-  console.log(users)
+
 
   return (
     <Routes>
