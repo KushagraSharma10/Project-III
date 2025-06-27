@@ -5,14 +5,16 @@
       "Name": "Kushagra Sharma",
       "Email": "kushagrasharma@gmail.com",
       "Password": "asldjas",
-      "isAdmin": true
+      "isAdmin": true,
+      "cart" : []
     },
     {
       "id": "W8zqiGf8ymKxbOBJWqEmQ",
       "Name": "Sheriyans coding school",
       "Email": "sheriyanscoding@gmail.com",
       "Password": "shery",
-      "isAdmin": false
+      "isAdmin": false,
+      "cart" : []
     }
   ],
   "products": [
