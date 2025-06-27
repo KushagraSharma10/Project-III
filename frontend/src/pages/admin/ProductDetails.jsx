@@ -13,8 +13,12 @@ import {
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const products = useSelector((state) => state.productReducer.products);
+  const {
+    productReducer: { products },
+    userReducer: { users },
+  } = useSelector((state) => state);
   const product = products?.find((product) => product.id === id);
+  console.log(product, users);
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -40,8 +44,6 @@ const ProductDetails = () => {
     { type: "text", label: "category", placeholder: "Category" },
   ];
 
-  console.log(product);
-
   const DeleteHandler = () => {
     dispatch(asyncDeleteProduct(id));
     navigate("/products");
@@ -65,49 +67,51 @@ const ProductDetails = () => {
           <p className="mt-5">{product.description}</p>
         </div>
       </div>
-      <form
-        onSubmit={handleSubmit(UpdateProductHandler)}
-        className="bg-zinc-900 w-[40vw] my-10 rounded-lg shadow-xl px-5 py-8"
-      >
-        <h1 className="text-center text-2xl">Create Product</h1>
+      {users && users.isAdmin && (
+        <form
+          onSubmit={handleSubmit(UpdateProductHandler)}
+          className="bg-zinc-900 w-[40vw] my-10 rounded-lg shadow-xl px-5 py-8"
+        >
+          <h1 className="text-center text-2xl">Create Product</h1>
 
-        {fields.map((field, index) => (
-          <div key={index} className="flex flex-col mt-3 gap-3">
-            <label className="capitalize" htmlFor={field.label}>
-              {field.label}
-            </label>
-            <input
-              type={field.type}
-              {...register(`${field.label}`)}
-              className="px-3 py-2 rounded-md border-2 outline-none border-zinc-700 "
-              placeholder={field.placeholder}
+          {fields.map((field, index) => (
+            <div key={index} className="flex flex-col mt-3 gap-3">
+              <label className="capitalize" htmlFor={field.label}>
+                {field.label}
+              </label>
+              <input
+                type={field.type}
+                {...register(`${field.label}`)}
+                className="px-3 py-2 rounded-md border-2 outline-none border-zinc-700 "
+                placeholder={field.placeholder}
+              />
+            </div>
+          ))}
+          <div className="flex flex-col mt-3 gap-2">
+            <label htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              rows={4}
+              {...register("description")}
+              className="px-3 py-2 rounded-md border-2 outline-none text-white placeholder:text-zinc-400 border-zinc-700 resize-none "
+              placeholder="Enter product description..."
             />
           </div>
-        ))}
-        <div className="flex flex-col mt-3 gap-2">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            rows={4}
-            {...register("description")}
-            className="px-3 py-2 rounded-md border-2 outline-none text-white placeholder:text-zinc-400 border-zinc-700 resize-none "
-            placeholder="Enter product description..."
-          />
-        </div>
 
-        <div className="w-full">
-          <button className="px-3 mt-5 w-full py-1.5 font-semibold bg-green-600 rounded-md">
-            Update Product
-          </button>
-          <button
-          type="button"
-            onClick={DeleteHandler}
-            className="px-3 mt-5 w-full py-1.5 font-semibold bg-red-600 rounded-md"
-          >
-            Delete Product
-          </button>
-        </div>
-      </form>
+          <div className="w-full">
+            <button className="px-3 mt-5 w-full py-1.5 font-semibold bg-green-600 rounded-md">
+              Update Product
+            </button>
+            <button
+              type="button"
+              onClick={DeleteHandler}
+              className="px-3 mt-5 w-full py-1.5 font-semibold bg-red-600 rounded-md"
+            >
+              Delete Product
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 };
