@@ -9,21 +9,21 @@ const Products = () => {
     return (
       <div
         key={index}
-        className="w-[24vw] [40vh] rounded-md overflow-hidden bg-zinc-900 border border-zinc-700 shadow"
+        className="w-[24vw] rounded-md overflow-hidden bg-zinc-900 border border-zinc-700 shadow"
       >
         <img
           className="w-full h-[20vh] object-cover"
           src={product.image}
           alt=""
         />
-        <div className="px-2 py-5 flex flex-col gap-4 justify-between">
+        <div className="px-4 py-5 flex flex-col gap-4 justify-between">
           <h1>{product.title}</h1>
           <small>{product.description.slice(0, 100)}...</small>
-          <div>
+          <div className="flex items-center justify-between my-2">
             <p>{product.price}</p>
             <button>Add to cart</button>
           </div>
-          <Link to={`/product/${product.id}`}>More Info</Link>
+          <Link className="" to={`/product/${product.id}`}>More Info</Link>
         </div>
       </div>
     );
