@@ -3,7 +3,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Products = () => {
-  const products = useSelector((state) => state.productReducer.products);
+  const {
+    productReducer: { products },
+    userReducer: { users },
+  } = useSelector((state) => state);
+
+  const AddToCartHandler = (id) => {
+    const copyUser = { ...users };
+    const x = copyUser.cart.find((e) => e.id == id);
+    console.log(x);
+  };
 
   const renderProducts = products.map((product, index) => {
     return (
@@ -21,9 +30,13 @@ const Products = () => {
           <small>{product.description.slice(0, 100)}...</small>
           <div className="flex items-center justify-between my-2">
             <p>{product.price}</p>
-            <button>Add to cart</button>
+            <button onClick={() => AddToCartHandler(product.id)}>
+              Add to cart
+            </button>
           </div>
-          <Link className="" to={`/product/${product.id}`}>More Info</Link>
+          <Link className="" to={`/product/${product.id}`}>
+            More Info
+          </Link>
         </div>
       </div>
     );
