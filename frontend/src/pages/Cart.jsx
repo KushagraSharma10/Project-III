@@ -26,7 +26,7 @@ const Cart = () => {
         ...copyUser.cart[index],
         quantity: copyUser.cart[index].quantity - 1,
       } } else{
-        copyUser.cart = []
+        copyUser.splice(index , 1)
       }
 
     
