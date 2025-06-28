@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import MainRoutes from "./routes/MainRoutes";
 import Nav from "./components/Nav";
 import { useDispatch, useSelector } from "react-redux";

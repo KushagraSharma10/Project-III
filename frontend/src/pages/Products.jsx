@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { asyncUpdateUser } from "../store/actions/userActions";
 import axios from "../api/axiosconfig";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -11,11 +12,18 @@ const Products = () => {
   // const products = useSelector((state) => state.productReducer.products);
 
   const [products, setproducts] = useState([]);
-
+  const [hasMore, sethasMore] = useState(true);
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get("/products?_limit=6");
-      setproducts(data);
+      const { data } = await axios.get(
+        `/products?_limit=6&_start=${products.length}`
+      );
+      if (data.length == 0) {
+        sethasMore(false);
+      } else {
+        setproducts([...products, ...data]);
+        sethasMore(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -69,7 +77,20 @@ const Products = () => {
   });
 
   return products.length ? (
-    <div className="w-full  flex items-center flex-wrap">{renderProducts}</div>
+    <InfiniteScroll
+      className="w-full  flex items-center flex-wrap"
+      hasMore={hasMore}
+      dataLength={products.length}
+      next={fetchProducts}
+      loader={<h4>Loading...</h4>}
+      endMessage={
+        <p style={{ textAlign: "center" }}>
+          <b>Yay! You have seen it all</b>
+        </p>
+      }
+    >
+      {renderProducts}
+    </InfiniteScroll>
   ) : (
     "Loading..."
   );
