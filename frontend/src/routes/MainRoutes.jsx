@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import UserProfile from "../pages/user/UserProfile";
 import AuthWrapper from "./AuthWrapper";
 import PageNotFound from "../pages/PageNotFound";
+import Cart from "../pages/Cart";
 
 const MainRoutes = () => {
   return (
@@ -42,7 +43,16 @@ const MainRoutes = () => {
         }
       />
 
-      <Route path="*" element = {<PageNotFound />} />
+      <Route
+        path="/cart"
+        element={
+          <AuthWrapper>
+            <Cart />
+          </AuthWrapper>
+        }
+      />
+
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };

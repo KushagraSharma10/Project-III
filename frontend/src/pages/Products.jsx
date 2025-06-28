@@ -6,18 +6,18 @@ import { asyncUpdateUser } from "../store/actions/userActions";
 const Products = () => {
   const dispatch = useDispatch();
 
-  const {
-    productReducer: { products },
-    userReducer: { users },
-  } = useSelector((state) => state);
-  const AddToCartHandler = (id) => {
+  const users = useSelector((state) => state.userReducer.users);
+  const products = useSelector((state) => state.productReducer.products);
+
+
+  const AddToCartHandler = (product) => {
     const copyUser = { ...users, cart: [...users.cart] };
-    const index = copyUser.cart.findIndex((c) => c.productId == id);
+    const index = copyUser.cart.findIndex((c) => c?.product?.id == product.id);
     if (index == -1) {
-      copyUser.cart.push({ productId: id, quantity: 1 });
+      copyUser.cart.push({ product, quantity: 1 });
     } else {
       copyUser.cart[index] = {
-        productId: id,
+        product,
         quantity: copyUser.cart[index].quantity + 1,
       };
     }
@@ -41,7 +41,7 @@ const Products = () => {
           <small>{product.description.slice(0, 100)}...</small>
           <div className="flex items-center justify-between my-2">
             <p>{product.price}</p>
-            <button onClick={() => AddToCartHandler(product.id)}>
+            <button onClick={() => AddToCartHandler(product)}>
               Add to cart
             </button>
           </div>
