@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { asyncUpdateUser } from "../store/actions/userActions";
@@ -76,9 +76,9 @@ const Products = () => {
     );
   });
 
-  return products.length ? (
+  return (
     <InfiniteScroll
-      className="w-full  flex items-center flex-wrap"
+      className=""
       hasMore={hasMore}
       dataLength={products.length}
       next={fetchProducts}
@@ -89,10 +89,10 @@ const Products = () => {
         </p>
       }
     >
-      {renderProducts}
+      <div className="w-full  flex items-center flex-wrap">
+        <Suspense fallback= {<h1 className="text-center text-5xl bg-green-500">Loading...</h1>}>{renderProducts}</Suspense>
+      </div>
     </InfiniteScroll>
-  ) : (
-    "Loading..."
   );
 };
 
