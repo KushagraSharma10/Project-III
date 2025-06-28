@@ -1,17 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import CreateProduct from "../pages/admin/CreateProduct";
 import ProductDetails from "../pages/admin/ProductDetails";
-import { useSelector } from "react-redux";
 import UserProfile from "../pages/user/UserProfile";
 import AuthWrapper from "./AuthWrapper";
 import PageNotFound from "../pages/PageNotFound";
 import Cart from "../pages/Cart";
-
 const MainRoutes = () => {
   return (
     <Routes>

@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { asyncUpdateUser } from "../store/actions/userActions";
+import axios from "../api/axiosconfig";
 
 const Products = () => {
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.userReducer.users);
-  const products = useSelector((state) => state.productReducer.products);
+  // const products = useSelector((state) => state.productReducer.products);
 
+  const [products, setproducts] = useState([]);
+
+  const fetchProducts = async () => {
+    try {
+      const { data } = await axios.get("/products?_limit=6");
+      setproducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  });
 
   const AddToCartHandler = (product) => {
     const copyUser = { ...users, cart: [...users.cart] };
@@ -53,8 +68,10 @@ const Products = () => {
     );
   });
 
-  return (
+  return products.length ? (
     <div className="w-full  flex items-center flex-wrap">{renderProducts}</div>
+  ) : (
+    "Loading..."
   );
 };
 
